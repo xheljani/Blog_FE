@@ -1,0 +1,102 @@
+
+<nav class="navbar navbar-dark bg-dark navbar-default main-header">
+  <div class="container header-main">
+    <div class="navbar-header">
+      <a routerLink="/home" class="navbar-brand text-white pull-left">Blog</a>
+      <a routerLink="/add-post" class="navbar-brand text-white pull-left">Add new post</a>
+    
+    </div>
+  </div>
+  <button class="navbar-brand btn btn-danger my-2 my-sm-0 pull-right" (click)="onLogout()">Logout</button>
+</nav>
+<!-- 
+      <form #form="ngForm" (submit)="onSubmit(form)" autocomplete="off">
+        <div class="form-group">
+          <label>Title</label>
+          <input name="Title" #Title="ngModel" [(ngModel)]="service.formData.title" class="form-control" required>
+          <div class="validation-error" *ngIf="Title.invalid && Title.touched" style="color: red;">This field is required.</div>
+        </div>
+        <div class="form-group">
+          <label>Content</label>
+          <input type="text" name="Content" #Content="ngModel" [(ngModel)]="service.formData.content" class="form-control" required>
+          <div class="validation-error" *ngIf="Content.invalid && Content.touched" style="color: red;">This field is required.</div>
+        </div>
+        <div class="form-row">
+                                  <!-- <div class="form-group" col-md-6>
+                                    <label>DateTime</label>
+                                    <input type="date" name="DateTime" #DateTime="ngModel" [(ngModel)]="service.formData.DateTime" class="form-control">
+                                  </div>
+                                  <div class="form-group" col-md-6>
+                                    <label>UpdateTime</label>
+                                    <input type="date" name="UpdateTime" #UpdateTime="ngModel" [(ngModel)]="service.formData.UpdateTime" class="form-control">
+                                  </div>
+                                  <div class="form-group" col-md-6>
+                                    <label>UserID</label>
+                                    <input name="UserID" #UserID="ngModel" [(ngModel)]="service.formData.UserID" class="form-control">
+                                  </div> -->
+        <!-- </div>
+        <div class="form-group">
+          <button type="submit" [disabled] = "form.invalid" class="btn btn-lg btn-block">SUBMIT</button>
+        </div>
+      </form>
+    </div> --> -->
+
+<!-- <form [formGroup]="postForm"></form> -->
+      
+<div _ngcontent-rxe-c45 class="container">
+  <div _ngcontent-rxe-c45 class="col-md-12 col-sm-9 col-xs-12">
+    <form #form="ngForm" (submit)="onSubmit(form)" autocomplete="off" style="background-color: white; opacity: 0.8;">
+      <!-- <div _ngcontent-rxe-c45 class="col-md-4 col-sm-3 col-xs-12">
+        <input type="file"  (change)="detectFiles($event) " accept="image/x-png,image/gif,image/jpeg" class="form-control" >
+        <img alt="" id="blah" height="200" width="200" class="img-rounded" [src]="imageSrc || 'http://placehold.it/180'" alt="your image" />
+      </div> <br> -->
+        <!-- <div>{{ uploadPercent | async }}</div> -->
+        <!-- <a href="{{downloadURL}}"> Click Here To View Your Image</a> -->
+    
+<br>
+     
+
+      <div class="col-md-8 col-xs-12">
+
+        <div class="form-group">
+          <label for="comment">Title:</label>
+          <div class="input-style">
+            <input name="Title" #Title="ngModel" [(ngModel)]="postObject.title" class="form-control" required>
+            <div class="validation-error" *ngIf="Title.invalid && Title.touched" style="color: red;">This field is required.</div>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="comment">Content:</label>
+          <div class="input-style">
+            <textarea type="text" style="background-color:#636B7B; color: #FFFFFF;" name="Content" #Content="ngModel" [(ngModel)]="postObject.content" class="form-control" rows="5" required> </textarea>
+            <div class="validation-error" *ngIf="Content.invalid && Content.touched" style="color: red;">This field is required.</div>
+          </div>
+        </div>
+
+        <div>
+          <input type="file" name="profile" (change)="onFileSelect($event)" />
+        </div>
+
+        <br>
+
+        <div *ngFor="let cat of categories" class="form-check">
+          <input class="form-check-input" type="checkbox" [ngModelOptions]="{standalone: true}" [(ngModel)]="cat.value" value="" id="flexCheckDefault">
+          <label class="form-check-label" for="flexCheckDefault">
+            {{cat.name}}
+          </label>
+        </div>
+ <br>
+
+        <div class="row submit-button-container">
+          <div class="col-md-4">
+            <button type="submit" [disabled] = "form.invalid" class="btn btn-lg btn-block">SUBMIT</button>
+          </div> <br> <br><br> 
+      </div>
+    </div>
+    </form>
+  </div>
+</div>
+
+
+

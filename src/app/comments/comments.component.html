@@ -1,0 +1,102 @@
+<nav class="navbar navbar-dark bg-dark navbar-default main-header">
+    <div class="container header-main">
+      <div class="navbar-header">
+        <a routerLink="//home" class="navbar-brand text-white pull-left">Blog</a>
+        <a routerLink="/add-post" class="navbar-brand text-white pull-left">Add new post</a>
+      
+      </div>
+    </div>
+    <button class="navbar-brand btn btn-danger my-2 my-sm-0 pull-right" (click)="onLogout()">Logout</button>
+  </nav>
+
+<div class="container">
+    <div class="jumbotron">
+        <h1 class="display-4 text-center">{{post?.title}}</h1>
+        <hr>
+        <div class="row">
+            <div class="col-md-2"></div>
+            <div class="col-md-8 col-offset-md-2">
+                <div *ngIf="post" class="card">
+                    <div class="card-header">
+                        <b>{{post.title}}</b>
+                    </div>
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-md-7">
+                                <div class="item">
+                                    <img class="card-img-top" [src]="post.filePath" alt="Card image cap">
+                                </div>
+                            </div>
+                            <div class="col-md-5 text-centered">
+                                {{post.content}}
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6 pull-left">{{post.user?.userName}}</div>
+                            <div style="text-align: right;" class="col-md-6 pull-right">{{post.createTime | date}}</div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+        <br>
+
+
+        <div class="row">
+            <div class="col-md-2"></div>
+            <div class="col-md-8 ">
+                <hr>
+                <form class="create-form " [formGroup]="CommentForm" novalidate
+                    (ngSubmit)="onSubmit(CommentForm.value) ">
+                    <div class="form-group ">
+                        <label for="comment ">Leave Your Comment Here:</label>
+                        <textarea class="form-control " rows="5 " id="comment " formControlName="comment"></textarea>
+
+                    </div>
+                    <div class="row submit-button-container ">
+                        <div class="col-md-4 ">
+                            <button class="btn btn-primary submit-button " color="primary " type="submit "
+                                [disabled]="!CommentForm.valid ">Post your comment</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <br>
+        <ng-container>
+            <div class="row" *ngFor="let comment of post?.comments">
+                <div class="col-md-2"></div>
+                <div class="col-md-8 commentsection">
+
+                    <h4>{{comment.user.userName}}</h4>
+                    <p class="date">{{comment.createTime| date:"short"}}</p>
+                    <p class="data">{{comment.content}}</p>
+                    <hr>
+
+                </div>
+            </div>
+            <br>
+        </ng-container>
+
+    </div>
+</div>
+
+<!-- <div class="container">
+
+    <hr>
+    <form class="create-form " [formGroup]="CommentForm" novalidate (ngSubmit)="onSubmit(CommentForm.value) ">
+        <div class="form-group ">
+            <label for="comment ">Leave Your Comment Here:</label>
+            <textarea class="form-control " rows="5 " id="comment " formControlName="comment"></textarea>
+
+        </div>
+        <div class="row submit-button-container ">
+            <div class="col-md-4 ">
+                <button class="btn btn-primary submit-button " color="primary " type="submit " [disabled]="!CommentForm.valid ">Post your comment</button>
+            </div>
+        </div>
+    </form>
+</div> -->

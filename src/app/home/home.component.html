@@ -1,0 +1,13 @@
+<nav class="navbar navbar-dark bg-dark navbar-default main-header">
+  <div class="container header-main">
+    <div class="navbar-header">
+      <a class="navbar-brand text-white pull-left">Blog</a>
+      <a routerLink="/add-post" class="navbar-brand text-white pull-left">Add new post</a>
+    
+    </div>
+  </div>
+  <button class="navbar-brand btn btn-danger my-2 my-sm-0 pull-right" (click)="onLogout()">Logout</button>
+</nav>
+<div class="container">
+  <app-posts></app-posts>
+</div>
